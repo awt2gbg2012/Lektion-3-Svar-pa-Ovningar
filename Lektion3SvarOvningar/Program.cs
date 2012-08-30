@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Lektion3SvarOvningar.ExtensionMethods;
+using Lektion3SvarOvningar.Model.Repository;
 
 namespace Lektion3SvarOvningar
 {
@@ -12,20 +13,10 @@ namespace Lektion3SvarOvningar
         {
             // Metoden ligger i ExtensionMethods/ExtensionMethods.cs
 
-            // In returnerar true ifall objektet det anropas på finns i listan
-            // som används som in-parameter till In
+            var user = (new Repository()).GetUsers().FirstOrDefault();
 
-            int[] intList = { 1, 4, 6, 8 };
-            Print(4.In(intList).ToString()); // true
-
-            List<int> intList2 = new List<int> { 6, 8, 0, 3 };
-            int i = 7;
-            Print(i.In(intList2.ToArray()).ToString()); // false
-
-            string str = "test";
-            Print(str.In("hej", "test", "jah").ToString()); // true
-
-
+            Print(user.ToString()); // Detta är .ToString() som ärvs av Object - Det är omöjligt att ersätta denna med en extension method
+            Print(user.ToString(true)); // Detta är min ExtensionMethod - jag har lagt till ett extra parameter, nu funkar det
 
 
 

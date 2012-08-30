@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Lektion3SvarOvningar.Model;
 
 namespace Lektion3SvarOvningar.ExtensionMethods
 {
@@ -16,6 +17,16 @@ namespace Lektion3SvarOvningar.ExtensionMethods
         {
             if (null == source) throw new ArgumentNullException("source");
             return list.Contains(source);
+        }
+
+        public static string ToString(this User user, bool shortFormat)
+        {
+            if (shortFormat)
+                return string.Format("Name: '{0}' ID: '{1}'", user.FullName, user.UserID);
+
+            return string.Format("UserName: '{0}' FullName: '{1}' ID: '{2}'", user.UserName
+                                                                            , user.FullName
+                                                                            , user.UserID);
         }
     }
 }

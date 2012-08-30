@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtensionMethods\ExtensionMethods.cs" />
+    <Compile Include="Model\Post.cs" />
+    <Compile Include="Model\Repository\Repository.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
