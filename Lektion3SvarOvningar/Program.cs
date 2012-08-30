@@ -11,9 +11,13 @@ namespace Lektion3SvarOvningar
     {
         static void Main(string[] args)
         {
-            Func<string, bool> myDelegate = s => s.Length < 4;
-            Print(myDelegate("asdf").ToString()); // false;
-            Print(myDelegate("asd").ToString()); // true;
+            Func<string, bool> IsLessThan4Chars = s => s.Length < 4;
+            var allUsers = (new Repository()).GetUsers();
+            var allPosts = (new Repository()).GetPosts();
+
+            var users = from u in allUsers
+                        where IsLessThan4Chars(u.FirstName)
+                        select u;
 
 
 
