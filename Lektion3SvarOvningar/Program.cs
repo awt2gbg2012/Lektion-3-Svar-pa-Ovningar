@@ -15,9 +15,8 @@ namespace Lektion3SvarOvningar
             var allUsers = (new Repository()).GetUsers();
             var allPosts = (new Repository()).GetPosts();
 
-            var allUsersOfTypeUser = allUsers.Where(u => u.Type == User.UserType.User);
-            foreach (var user in allUsersOfTypeUser)
-                Print(user.ToString());
+            var averageLengthForFullName = allUsers.Average(u => u.FullName.Length);
+            Print(averageLengthForFullName.ToString());
 
 
 
