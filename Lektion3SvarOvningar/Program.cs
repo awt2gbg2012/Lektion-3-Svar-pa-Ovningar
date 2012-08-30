@@ -11,13 +11,9 @@ namespace Lektion3SvarOvningar
     {
         static void Main(string[] args)
         {
-            // Metoden ligger i ExtensionMethods/ExtensionMethods.cs
-
-            var user = (new Repository()).GetUsers().FirstOrDefault();
-
-            Print(user.ToString()); // Detta är .ToString() som ärvs av Object - Det är omöjligt att ersätta denna med en extension method
-            Print(user.ToString(true)); // Detta är min ExtensionMethod - jag har lagt till ett extra parameter, nu funkar det
-
+            Func<string, bool> myDelegate = s => s.Length < 4;
+            Print(myDelegate("asdf").ToString()); // false;
+            Print(myDelegate("asd").ToString()); // true;
 
 
 
