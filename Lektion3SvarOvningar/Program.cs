@@ -12,20 +12,19 @@ namespace Lektion3SvarOvningar
     {
         static void Main(string[] args)
         {
-            // Insåg att om jag skapar ett repo för bägge raderna nedan så kommer 
-            // användarna ha olika IDs i allPosts och allUsers eftersom datan genereras 
-            // om varje gång jag skapa ett repo - är även ett problem för min lösning på 
-            // uppgift 6 - använd samma repo för både .GetUsers() och .GetPosts() för 
-            // att få ut ett resultat för uppg. 6
             var Repo = new Repository(); 
             var allUsers = Repo.GetUsers();
             var allPosts = Repo.GetPosts();
 
-            var funnyPosts = allPosts.Where(p => p.Tags.Any(t => t == Post.PostTags.Funny));
-            var postersOfFunnyTags = allUsers.Where(u => funnyPosts.Any(p => p.CreatedByID == u.UserID));
-            foreach (var user in postersOfFunnyTags)
-                Print(user.ToString());
-
+            var datePostGroups = allPosts.OrderBy(p => p.CreateDate).GroupBy(p => p.CreateDate.Date);
+            foreach (var group in datePostGroups)
+            {
+                Print(group.Key.ToShortDateString() + ":");
+                foreach (var post in group)
+                {
+                    Print("\t" + post.ToString());
+                }
+            }
 
             Console.ReadLine();
         }
