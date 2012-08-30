@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Lektion3SvarOvningar.ExtensionMethods;
 using Lektion3SvarOvningar.Model.Repository;
+using Lektion3SvarOvningar.Model;
 
 namespace Lektion3SvarOvningar
 {
@@ -14,10 +15,9 @@ namespace Lektion3SvarOvningar
             var allUsers = (new Repository()).GetUsers();
             var allPosts = (new Repository()).GetPosts();
 
-            var postedByAdmins = from p in allPosts
-                                 join u in allUsers on p.CreatedByID equals u.UserID
-                                 where u.Type == Model.User.UserType.Admin
-                                 select p;
+            var allUsersOfTypeUser = allUsers.Where(u => u.Type == User.UserType.User);
+            foreach (var user in allUsersOfTypeUser)
+                Print(user.ToString());
 
 
 

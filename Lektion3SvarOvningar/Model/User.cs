@@ -37,13 +37,13 @@ namespace Lektion3SvarOvningar.Model
 
         public UserType Type { get; set; }
 
-        //public string ToString(bool ShortFormat = true)
-        //{
-        //    string userString = string.Format("\tFullName: '{0}' - UserID: '{1}'", FullName, UserID);
-        //    if (!ShortFormat)
-        //        userString += string.Format("\n\t\tUserName: '{0}' - UserType: '{1}'", UserName, Type);
-        //    return userString;
-        //}
+        public string ToString(bool ShortFormat = true)
+        {
+            string userString = string.Format("\tFullName: '{0}' - UserID: '{1}'", FullName, UserID);
+            if (!ShortFormat)
+                userString += string.Format("\n\t\tUserName: '{0}' - UserType: '{1}'", UserName, Type);
+            return userString;
+        }
 
         public enum UserType
         {
