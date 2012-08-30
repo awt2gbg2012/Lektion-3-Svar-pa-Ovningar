@@ -11,5 +11,11 @@ namespace Lektion3SvarOvningar.ExtensionMethods
         {
             return i >= min && i <= max;
         }
+
+        public static bool In<T>(this T source, params T[] list)
+        {
+            if (null == source) throw new ArgumentNullException("source");
+            return list.Contains(source);
+        }
     }
 }

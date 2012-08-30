@@ -12,10 +12,23 @@ namespace Lektion3SvarOvningar
         {
             // Metoden ligger i ExtensionMethods/ExtensionMethods.cs
 
-            Print(1.Between(0, 4).ToString()); // true
+            // In returnerar true ifall objektet det anropas på finns i listan
+            // som används som in-parameter till In
 
+            int[] intList = { 1, 4, 6, 8 };
+            Print(4.In(intList).ToString()); // true
+
+            List<int> intList2 = new List<int> { 6, 8, 0, 3 };
             int i = 7;
-            Print(i.Between(2,5).ToString()); // false
+            Print(i.In(intList2.ToArray()).ToString()); // false
+
+            string str = "test";
+            Print(str.In("hej", "test", "jah").ToString()); // true
+
+
+
+
+
 
             Console.ReadLine();
         }
