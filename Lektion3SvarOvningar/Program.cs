@@ -12,19 +12,9 @@ namespace Lektion3SvarOvningar
     {
         static void Main(string[] args)
         {
-            var Repo = new Repository(); 
-            var allUsers = Repo.GetUsers();
-            var allPosts = Repo.GetPosts();
-
-            var datePostGroups = allPosts.OrderBy(p => p.CreateDate).GroupBy(p => p.CreateDate.Date);
-            foreach (var group in datePostGroups)
-            {
-                Print(group.Key.ToShortDateString() + ":");
-                foreach (var post in group)
-                {
-                    Print("\t" + post.ToString());
-                }
-            }
+            var Repo = new Repository();
+            foreach (var user in Repo.GetUsers(u => u.Type == User.UserType.SuperUser))
+                Print(user.ToString());
 
             Console.ReadLine();
         }

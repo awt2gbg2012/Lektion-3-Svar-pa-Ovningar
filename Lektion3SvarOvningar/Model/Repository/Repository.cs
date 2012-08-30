@@ -17,14 +17,20 @@ namespace Lektion3SvarOvningar.Model.Repository
             posts = GeneratePosts(UserIDs);
         }
 
-        public List<User> GetUsers()
+        public List<User> GetUsers(Func<User, bool> filter = null)
         {
-            return users;
+            if (null == filter)
+                return users;
+
+            return users.Where(filter).ToList();
         }
 
-        public List<Post> GetPosts()
+        public List<Post> GetPosts(Func<Post,bool> filter = null)
         {
-            return posts;
+            if (null == filter)
+                return posts;
+
+            return posts.Where(filter).ToList();
         }
 
         // #region gör att allt fram till #endregion kan minimeras till en rad i Visual Studio.
