@@ -5,12 +5,16 @@ using System.Text;
 
 namespace Lektion3SvarOvningar.Model.Repository
 {
-    public class Repository
+    public class SingletonRepository
     {
         private List<User> users;
         private List<Post> posts;
 
-        public Repository()
+        // Singleton Repo - Ej threadsafe, Ej bra implementerad - Exempel på en bättre, threadsafe Singleton finns i Repot för lektion 6
+        private static SingletonRepository instance = new SingletonRepository();
+        public static SingletonRepository Instance { get { return instance; } }
+
+        private SingletonRepository()
         {
             List<Guid> UserIDs;
             users = GenerateUsers(out UserIDs); // För nyckelordet 'out' se kommentar innan definitionen av GenerateUsers

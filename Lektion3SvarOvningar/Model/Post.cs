@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Lektion3SvarOvningar.Model.Repository;
 
 namespace Lektion3SvarOvningar.Model
 {
@@ -61,8 +62,9 @@ namespace Lektion3SvarOvningar.Model
          * Vi kommer se hur detta kan skötas i verkligheten senare i kursen
          * 
          */
-        public void LoadUser(List<User> users)
+        public void LoadUser()
         {
+            var users = SingletonRepository.Instance.GetUsers();
             _CreatedBy = users.Where(u => u.UserID == CreatedByID).FirstOrDefault();
         }
 
